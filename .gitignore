@@ -1,0 +1,4 @@
+model.pkl
+mlruns/
+__pycache__/
+*.pyc
