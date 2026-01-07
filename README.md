@@ -34,7 +34,7 @@ This system simulates how Google Maps, Ola, Uber and Smart City traffic control 
 
 ## 🏗 System Architecture
 
-
+```mermaid
 graph TD
 A[Live Traffic Input] --> B[FastAPI ML Service]
 B --> C[Congestion Prediction]
@@ -42,49 +42,61 @@ C --> D[Drift Monitor]
 D -->|Drift Detected| E[Auto Retraining]
 E --> F[CI/CD Deployment]
 F --> B
+```
 
-##🛠 Tech Stack
-| Layer      | Tech                   |
-| ---------- | ---------------------- |
-| ML         | RandomForest           |
-| API        | FastAPI                |
-| Tracking   | MLflow                 |
-| CI/CD      | GitHub Actions         |
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|-----|----------|
+| ML Model | Random Forest |
+| API | FastAPI |
+| Tracking | MLflow |
+| CI/CD | GitHub Actions |
 | Monitoring | Drift Detection Engine |
-| Cloud      | Render                 |
+| Cloud | Render |
 
-##🌐 Live API Demo
+---
 
-Endpoint
+## 🌐 Live API Demo
 
+### Endpoint
+```
 POST /predict
+```
 
-
-Sample Input
-
+### Sample Input
+```json
 {
   "Junction": 1,
   "hour": 18,
   "day": 6,
   "month": 12
 }
+```
 
-
-Output
-
+### Output
+```json
 {
   "predicted_vehicle_count": 41
 }
+```
 
-##🔁 Self-Healing Logic
-| Condition        | Action            |
-| ---------------- | ----------------- |
-| MAE increases    | Drift detected    |
-| Drift detected   | Retrain triggered |
-| New model better | Auto deployed     |
+---
 
-##👨‍💻 Author
+## 🔁 Self-Healing Logic
 
-Sukumar BV
-3rd Year AIML Student
+| Condition | Action |
+|---------|------|
+| MAE increases | Drift detected |
+| Drift detected | Retraining triggered |
+| New model performs better | Auto deployed |
+
+---
+
+## 👨‍💻 Author
+
+**Sukumar BV**  
+3rd Year AIML Student  
 🔗 https://github.com/SukumarBV
