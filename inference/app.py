@@ -8,6 +8,9 @@ model = joblib.load("model.pkl")
 
 # These must match training columns
 FEATURE_COLUMNS = ['Junction', 'hour', 'day', 'month']
+@app.get("/healthz")
+def health():
+    return {"status": "ok"}
 
 @app.post("/predict")
 def predict(data: dict):
