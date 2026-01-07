@@ -34,7 +34,7 @@ This system simulates how Google Maps, Ola, Uber and Smart City traffic control 
 
 ## 🏗 System Architecture
 
-```mermaid
+```
 graph TD
 A[Live Traffic Input] --> B[FastAPI ML Service]
 B --> C[Congestion Prediction]
