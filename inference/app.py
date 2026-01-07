@@ -3,6 +3,9 @@ import joblib
 import pandas as pd
 
 app = FastAPI(title="Bengaluru Traffic Congestion Predictor")
+@app.get("/")
+def home():
+    return {"status": "Traffic AI running"}
 
 model = joblib.load("model.pkl")
 
