@@ -1,27 +1,25 @@
 name: Traffic MLOps Pipeline
 
 on:
+  schedule:
+    - cron: "0 0 * * *"   # daily midnight run
   push:
     paths:
       - "data/**"
-      - "training/**"
 
 jobs:
-  retrain:
+  monitor-and-retrain:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setup Python
-      uses: actions/setup-python@v2
+    - uses: actions/setup-python@v2
       with:
         python-version: "3.9"
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+    - name: Install deps
+      run: pip install -r requirements.txt
 
-    - name: Retrain Model
-      run: |
-        python training/train.py
+    - name: Run drift monitor
+      run: python monitoring/drift_check.py
