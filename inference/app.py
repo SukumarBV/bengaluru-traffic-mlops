@@ -1,23 +1,25 @@
 from fastapi import FastAPI
 import joblib
 import pandas as pd
+import os
+import subprocess
 
 app = FastAPI(title="Bengaluru Traffic Congestion Predictor")
+
 @app.get("/")
 def home():
     return {"status": "Traffic AI running"}
 
-model = joblib.load("model.pkl")
+MODEL_PATH = "model.pkl"
 
-# These must match training columns
-FEATURE_COLUMNS = ['Junction', 'hour', 'day', 'month']
-@app.get("/healthz")
-def health():
-    return {"status": "ok"}
+# Auto train if model not found (cloud-safe)
+if not os.path.exists(MODEL_PATH):
+    subprocess.call(["python", "training/train.py"])
+
+model = joblib.load(MODEL_PATH)
 
 @app.post("/predict")
 def predict(data: dict):
     df = pd.DataFrame([data])
-    df = df[FEATURE_COLUMNS]
     prediction = model.predict(df)[0]
     return {"predicted_vehicle_count": int(prediction)}
