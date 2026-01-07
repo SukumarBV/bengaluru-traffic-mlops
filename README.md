@@ -1,81 +1,90 @@
-🚦 Bengaluru Smart City Traffic Congestion Prediction System (MLOps)
+# 🚦 Bengaluru Smart City Traffic Congestion AI
 
-Live API:
-https://bengaluru-traffic-mlops.onrender.com
+<p align="center">
+  <b>Production-Grade MLOps System | Live Smart City Intelligence</b><br>
+  🌐 <a href="https://bengaluru-traffic-mlops.onrender.com">Live API</a> • ⚙️ CI/CD • 📊 MLflow • 🤖 Auto-Retraining
+</p>
 
-An end-to-end production-style MLOps system that predicts real-time traffic congestion across Bengaluru city using machine learning, automated monitoring, retraining, and CI/CD deployment.
+<p align="center">
+  <img src="https://img.shields.io/badge/MLOps-Production%20Ready-brightgreen?style=for-the-badge">
+  <img src="https://img.shields.io/badge/SmartCity-Bengaluru-blue?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Deployment-Live-success?style=for-the-badge">
+</p>
 
-This project simulates how Smart City platforms, Google Maps, Ola, and Uber manage city-scale traffic intelligence.
+---
 
-🧠 Problem Statement
+## 🧠 What This Is
 
-Urban traffic congestion causes huge productivity loss and commuter frustration.
-Smart cities require intelligent systems that can:
+A **live smart-city AI engine** that predicts real-time traffic congestion in Bengaluru and automatically retrains itself when traffic patterns change.
 
-• Predict traffic congestion in advance
-• Automatically adapt to changing traffic patterns
-• Remain accurate without manual retraining
+This system simulates how Google Maps, Ola, Uber and Smart City traffic control platforms manage city-scale traffic intelligence.
 
-This project solves that by building a self-healing city traffic AI system.
+---
 
-🏗 System Architecture
-Live Traffic Input → FastAPI Prediction Service → Congestion Prediction
-                                ↓
-                        Drift Monitoring Engine
-                                ↓
-                    Automated Retraining (CI/CD Pipeline)
-                                ↓
-                     Updated Model Deployed Automatically
+## 🏙 Real-World Impact
+
+| Problem | Solution |
+|-------|--------|
+| Traffic congestion | Predict congestion in advance |
+| Changing patterns | Drift detection |
+| Manual retraining | Automated retraining |
+| Static models | Self-healing ML system |
+
+---
+
+## 🏗 System Architecture
+
+```mermaid
+graph TD
+A[Live Traffic Input] --> B[FastAPI ML Service]
+B --> C[Congestion Prediction]
+C --> D[Drift Monitor]
+D -->|Drift Detected| E[Auto Retraining]
+E --> F[CI/CD Deployment]
+F --> B
 
 🛠 Tech Stack
-Layer	Technology
-ML Model	Random Forest Regressor
-API	FastAPI
-MLOps Tracking	MLflow
-CI/CD	GitHub Actions
-Monitoring	Custom Drift Detection
-Deployment	Render Cloud
-Dataset	Bengaluru Government Traffic Dataset
-🚀 Key Features
+| Layer      | Tech                   |
+| ---------- | ---------------------- |
+| ML         | RandomForest           |
+| API        | FastAPI                |
+| Tracking   | MLflow                 |
+| CI/CD      | GitHub Actions         |
+| Monitoring | Drift Detection Engine |
+| Cloud      | Render                 |
 
-✔ Live public prediction API
-✔ Smart city–scale congestion forecasting
-✔ Automated drift detection
-✔ Automatic retraining when accuracy drops
-✔ Continuous integration & deployment
-✔ Cloud-hosted production service
-
-🌐 Live API Usage
+🌐 Live API Demo
 
 Endpoint
 
 POST /predict
 
 
-Request
+Sample Input
 
 {
-  "Junction": 2,
+  "Junction": 1,
   "hour": 18,
   "day": 6,
   "month": 12
 }
 
 
-Response
+Output
 
 {
-  "predicted_vehicle_count": 39
+  "predicted_vehicle_count": 41
 }
 
-🔁 Auto Retraining Logic
-Condition	Action
-Prediction MAE increases	Drift detected
-Drift detected	Model retrains automatically
-New model performs better	Deployed via CI/CD
+🔁 Self-Healing Logic
+| Condition        | Action            |
+| ---------------- | ----------------- |
+| MAE increases    | Drift detected    |
+| Drift detected   | Retrain triggered |
+| New model better | Auto deployed     |
 
 👨‍💻 Author
 
 Sukumar BV
 3rd Year AIML Student
-GitHub: https://github.com/SukumarBV
+🔗 https://github.com/SukumarBV
