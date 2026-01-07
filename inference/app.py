@@ -8,7 +8,11 @@ app = FastAPI(title="Bengaluru Traffic Congestion Predictor")
 def home():
     return {"status": "Traffic AI running"}
 
-model = joblib.load("model_small.pkl")
+
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, "model_small.pkl")
+model = joblib.load(MODEL_PATH)
 
 @app.post("/predict")
 def predict(data: dict):
