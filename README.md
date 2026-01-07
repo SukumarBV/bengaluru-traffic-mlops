@@ -34,7 +34,7 @@ This system simulates how Google Maps, Ola, Uber and Smart City traffic control 
 
 ## 🏗 System Architecture
 
-```
+
 graph TD
 A[Live Traffic Input] --> B[FastAPI ML Service]
 B --> C[Congestion Prediction]
@@ -43,7 +43,7 @@ D -->|Drift Detected| E[Auto Retraining]
 E --> F[CI/CD Deployment]
 F --> B
 
-🛠 Tech Stack
+##🛠 Tech Stack
 | Layer      | Tech                   |
 | ---------- | ---------------------- |
 | ML         | RandomForest           |
@@ -53,7 +53,7 @@ F --> B
 | Monitoring | Drift Detection Engine |
 | Cloud      | Render                 |
 
-🌐 Live API Demo
+##🌐 Live API Demo
 
 Endpoint
 
@@ -76,14 +76,14 @@ Output
   "predicted_vehicle_count": 41
 }
 
-🔁 Self-Healing Logic
+##🔁 Self-Healing Logic
 | Condition        | Action            |
 | ---------------- | ----------------- |
 | MAE increases    | Drift detected    |
 | Drift detected   | Retrain triggered |
 | New model better | Auto deployed     |
 
-👨‍💻 Author
+##👨‍💻 Author
 
 Sukumar BV
 3rd Year AIML Student
