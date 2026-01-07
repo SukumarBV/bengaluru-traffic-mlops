@@ -1,8 +1,6 @@
 from fastapi import FastAPI
 import joblib
 import pandas as pd
-import os
-import subprocess
 
 app = FastAPI(title="Bengaluru Traffic Congestion Predictor")
 
@@ -10,13 +8,7 @@ app = FastAPI(title="Bengaluru Traffic Congestion Predictor")
 def home():
     return {"status": "Traffic AI running"}
 
-MODEL_PATH = "model.pkl"
-
-# Auto train if model not found (cloud-safe)
-if not os.path.exists(MODEL_PATH):
-    subprocess.call(["python", "training/train.py"])
-
-model = joblib.load(MODEL_PATH)
+model = joblib.load("model_small.pkl")
 
 @app.post("/predict")
 def predict(data: dict):
