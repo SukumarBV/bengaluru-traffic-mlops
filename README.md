@@ -1,48 +1,53 @@
-#  Bengaluru Smart City Traffic Congestion AI
+# Urban Mobility MLOps Platform  
+### (Bengaluru Traffic Case Study)
 
 <p align="center">
-  <b>Production-Grade MLOps System | Live Smart City Intelligence</b><br>
-  🌐 <a href="https://bengaluru-traffic-mlops.onrender.com">Live API</a> • ⚙️ CI/CD • 📊 MLflow • 🤖 Auto-Retraining
+  <b>Production-Grade MLOps Platform for Urban Congestion Prediction</b><br>
+  Demonstrated using Bengaluru traffic data
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/MLOps-Production%20Ready-brightgreen?style=for-the-badge">
-  <img src="https://img.shields.io/badge/SmartCity-Bengaluru-blue?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Deployment-Live-success?style=for-the-badge">
+  <a href="https://bengaluru-traffic-mlops.onrender.com">Deployed API</a> • CI/CD • MLflow • Drift Monitoring
 </p>
 
 ---
 
-##  What This Is
+## Overview
 
-A **live smart-city AI engine** that predicts real-time traffic congestion in Bengaluru and automatically retrains itself when traffic patterns change.
+This project is a **production-oriented MLOps platform** designed for predicting and monitoring urban traffic congestion.  
+The system is **data-source agnostic** and can be adapted to any city given appropriate traffic data.
 
-This system simulates how Google Maps, Ola, Uber and Smart City traffic control platforms manage city-scale traffic intelligence.
+Bengaluru traffic data is used as a **case study** to demonstrate how such a platform would be trained, deployed, monitored, and maintained in a real-world environment.
 
----
-
-##  Real-World Impact
-
-| Problem | Solution |
-|-------|--------|
-| Traffic congestion | Predict congestion in advance |
-| Changing patterns | Drift detection |
-| Manual retraining | Automated retraining |
-| Static models | Self-healing ML system |
+The goal of this project is **not to control live traffic**, but to showcase how city-scale mobility ML systems are architected in production.
 
 ---
 
-##  System Architecture
+## What Problem This Addresses
+
+Urban traffic systems face challenges such as:
+
+| Challenge | Platform Capability |
+|--------|-------------------|
+| Non-stationary traffic patterns | Drift detection |
+| Model performance degradation | Automated retraining |
+| Manual ML deployments | CI/CD-driven updates |
+| Lack of observability | Experiment tracking & metrics |
+
+This platform demonstrates how these challenges can be handled using modern MLOps practices.
+
+---
+
+## Platform Architecture
 
 ```mermaid
 graph TD
-A[Live Traffic Input] --> B[FastAPI ML Service]
-B --> C[Congestion Prediction]
-C --> D[Drift Monitor]
-D -->|Drift Detected| E[Auto Retraining]
-E --> F[CI/CD Deployment]
-F --> B
-```
+A[Traffic Dataset / Data Source] --> B[Training Pipeline]
+B --> C[Trained Model Artifact]
+C --> D[FastAPI Inference Service]
+D --> E[Prediction Outputs]
+E --> F[Drift Monitoring]
+F -->|Drift Detected| B
 
 ---
 
@@ -92,6 +97,13 @@ POST /predict
 | MAE increases | Drift detected |
 | Drift detected | Retraining triggered |
 | New model performs better | Auto deployed |
+
+---
+
+## Case Study: Bengaluru Traffic Data
+
+Bengaluru traffic data is used as a demonstration dataset to validate the platform’s behavior.
+The same pipeline can be applied to other cities or mobility datasets with minimal changes.
 
 ---
 
