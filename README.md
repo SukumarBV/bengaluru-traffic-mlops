@@ -1,4 +1,4 @@
-# 🚦 Bengaluru Smart City Traffic Congestion AI
+#  Bengaluru Smart City Traffic Congestion AI
 
 <p align="center">
   <b>Production-Grade MLOps System | Live Smart City Intelligence</b><br>
@@ -13,7 +13,7 @@
 
 ---
 
-## 🧠 What This Is
+##  What This Is
 
 A **live smart-city AI engine** that predicts real-time traffic congestion in Bengaluru and automatically retrains itself when traffic patterns change.
 
@@ -21,7 +21,7 @@ This system simulates how Google Maps, Ola, Uber and Smart City traffic control 
 
 ---
 
-## 🏙 Real-World Impact
+##  Real-World Impact
 
 | Problem | Solution |
 |-------|--------|
@@ -32,7 +32,7 @@ This system simulates how Google Maps, Ola, Uber and Smart City traffic control 
 
 ---
 
-## 🏗 System Architecture
+##  System Architecture
 
 ```mermaid
 graph TD
@@ -46,7 +46,7 @@ F --> B
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |-----|----------|
@@ -59,7 +59,7 @@ F --> B
 
 ---
 
-## 🌐 Live API Demo
+##  Live API Demo
 
 ### Endpoint
 ```
@@ -85,7 +85,7 @@ POST /predict
 
 ---
 
-## 🔁 Self-Healing Logic
+##  Self-Healing Logic
 
 | Condition | Action |
 |---------|------|
@@ -95,7 +95,7 @@ POST /predict
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 **Sukumar BV**  
 3rd Year AIML Student  
