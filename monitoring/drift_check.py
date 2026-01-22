@@ -3,7 +3,7 @@ import joblib
 from sklearn.metrics import mean_absolute_error
 import subprocess
 
-model = joblib.load("model.pkl")
+model = joblib.load("model_cloud.pkl")
 df = pd.read_csv("data/bangalore_traffic.csv")
 
 # Recreate features same as training
