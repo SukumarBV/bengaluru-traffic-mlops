@@ -2,8 +2,13 @@ import pandas as pd
 import joblib
 from sklearn.metrics import mean_absolute_error
 import subprocess
+import os
 
-model = joblib.load("model_cloud.pkl")
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, "model_cloud.pkl")
+
+model = joblib.load(MODEL_PATH)
 df = pd.read_csv("data/bangalore_traffic.csv")
 
 # Recreate features same as training
