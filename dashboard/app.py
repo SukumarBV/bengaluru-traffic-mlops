@@ -91,11 +91,6 @@ else:
 st.session_state.idx += 1
 if st.session_state.idx >= len(data):
     st.session_state.idx = 0
-st.caption(f"Replay sleep: {round(sleep_time, 2)} seconds")
-
-time.sleep(max(sleep_time, 0.1))
-st.rerun()
-
 st.divider()
 st.subheader("Recent Traffic Trend (Last 30 Events)")
 
@@ -111,3 +106,8 @@ if len(st.session_state.history) >= 2:
         st.dataframe(hist_df, use_container_width=True)
 else:
     st.info("Waiting for more data points…")
+
+st.caption(f"Replay sleep: {round(sleep_time, 2)} seconds")
+
+time.sleep(max(sleep_time, 0.1))
+st.rerun()
