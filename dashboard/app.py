@@ -31,6 +31,8 @@ data = load_data()
 # Initialize pointer
 if "idx" not in st.session_state:
     st.session_state.idx = 0
+if "history" not in st.session_state:
+    st.session_state.history = []
 
 st.subheader("Current Traffic State (Simulated Live)")
 
@@ -60,8 +62,19 @@ if response.status_code == 200:
         f"Time {payload['hour']}:00 | "
         f"Row {st.session_state.idx}"
     )
+    st.session_state.history.append({
+        "DateTime": row["DateTime"],
+        "Junction": payload["Junction"],
+        "Predicted": result["predicted_vehicle_count"],
+        "Observed": int(row["Vehicles"]),
+        "Congestion": result["congestion_level"]
+    })
+
+    st.session_state.history = st.session_state.history[-30:]
+
 else:
     st.error("Backend error")
+
 
 # Advance pointer
 # Compute time-aware sleep
@@ -83,3 +96,18 @@ st.caption(f"Replay sleep: {round(sleep_time, 2)} seconds")
 time.sleep(max(sleep_time, 0.1))
 st.rerun()
 
+st.divider()
+st.subheader("Recent Traffic Trend (Last 30 Events)")
+
+if len(st.session_state.history) >= 2:
+    hist_df = pd.DataFrame(st.session_state.history)
+
+    st.line_chart(
+        hist_df.set_index("DateTime")[["Predicted", "Observed"]],
+        height=300
+    )
+
+    with st.expander("View recent data"):
+        st.dataframe(hist_df, use_container_width=True)
+else:
+    st.info("Waiting for more data points…")
