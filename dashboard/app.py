@@ -14,7 +14,8 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("Urban Mobility – Live Traffic Simulation")
+st.title("Urban Mobility – Real-Time Traffic Simulation (Event Replay)")
+
 
 # Load data once
 @st.cache_data
