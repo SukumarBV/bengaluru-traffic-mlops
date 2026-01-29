@@ -3,8 +3,9 @@ import requests
 import pandas as pd
 import time
 
-TIME_COMPRESSION = 30  # 30x faster than real time
-MAX_SLEEP = 3         # cap sleep to keep UI responsive
+TIME_COMPRESSION = 10   # less compression → more variation
+MAX_SLEEP = 8           # allow longer visible gaps
+
 
 API_URL = "https://Sukumarbv-bengaluru-traffic-api.hf.space"
 
@@ -77,6 +78,7 @@ else:
 st.session_state.idx += 1
 if st.session_state.idx >= len(data):
     st.session_state.idx = 0
+st.caption(f"Replay sleep: {round(sleep_time, 2)} seconds")
 
 time.sleep(max(sleep_time, 0.1))
 st.rerun()
