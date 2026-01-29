@@ -92,7 +92,7 @@ This platform demonstrates how these challenges can be handled using modern MLOp
 
 ---
 
-## Live API Demo --> https://bengaluru-traffic-mlops.onrender.com/
+## Live API Demo --> https://bengaluru-traffic-mlops-1.onrender.com/
 
 ### Endpoint
 ```
