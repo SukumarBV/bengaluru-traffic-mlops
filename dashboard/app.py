@@ -3,6 +3,9 @@ import requests
 import pandas as pd
 import time
 
+TIME_COMPRESSION = 30  # 30x faster than real time
+MAX_SLEEP = 3         # cap sleep to keep UI responsive
+
 API_URL = "https://Sukumarbv-bengaluru-traffic-api.hf.space"
 
 st.set_page_config(
@@ -60,11 +63,21 @@ else:
     st.error("Backend error")
 
 # Advance pointer
+# Compute time-aware sleep
+if st.session_state.idx < len(data) - 1:
+    current_time = row["DateTime"]
+    next_time = data.iloc[st.session_state.idx + 1]["DateTime"]
+
+    delta_seconds = (next_time - current_time).total_seconds()
+    sleep_time = min(delta_seconds / TIME_COMPRESSION, MAX_SLEEP)
+else:
+    sleep_time = 1
+
+# Advance pointer
 st.session_state.idx += 1
 if st.session_state.idx >= len(data):
     st.session_state.idx = 0
 
-# Auto-refresh
-time.sleep(3)
+time.sleep(max(sleep_time, 0.1))
 st.rerun()
 
