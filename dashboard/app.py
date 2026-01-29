@@ -15,7 +15,12 @@ st.title("Urban Mobility – Live Traffic Simulation")
 # Load data once
 @st.cache_data
 def load_data():
-    return pd.read_csv("data/bangalore_traffic.csv")
+    df = pd.read_csv("data/bangalore_traffic.csv")
+    df["DateTime"] = pd.to_datetime(df["DateTime"])
+    df["hour"] = df["DateTime"].dt.hour
+    df["day"] = df["DateTime"].dt.dayofweek + 1
+    df["month"] = df["DateTime"].dt.month
+    return df
 
 data = load_data()
 
@@ -33,6 +38,7 @@ payload = {
     "day": int(row["day"]),
     "month": int(row["month"])
 }
+
 
 response = requests.post(f"{API_URL}/predict", json=payload)
 
