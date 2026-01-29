@@ -10,7 +10,8 @@ st.title("Urban Mobility MLOps Platform")
 
 st.header("Live Traffic Prediction")
 
-API_URL = "http://127.0.0.1:8000"
+API_URL = "https://Sukumarbv-bengaluru-traffic-api.hf.space"
+
 
 col1, col2, col3, col4 = st.columns(4)
 
