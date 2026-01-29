@@ -66,4 +66,5 @@ if st.session_state.idx >= len(data):
 
 # Auto-refresh
 time.sleep(3)
-st.experimental_rerun()
+st.rerun()
+
